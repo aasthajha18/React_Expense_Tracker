@@ -14,25 +14,38 @@ const ExpenseForm = () => {
 
   const onChangeTitleHandler = (event) => {
     // setTitle(event.target.value);
-    setUserInput({
-      ...userInput,
-      title: event.target.value,
+    // setUserInput({
+    //   ...userInput,
+    //   title: event.target.value,
+    // });
+
+    //always use anonymous function when we are dealing with prev states or our new value are depending on the perv states
+    setUserInput((prevstate) => {
+      return { ...prevstate, title: event.target.value };
     });
   };
 
   const onChangeAmountHandler = (event) => {
     // setAmount(event.target.value);
-    setUserInput({
-      ...userInput,
-      amount: event.target.value,
+    // setUserInput({
+    //   ...userInput,
+    //   amount: event.target.value,
+    // });
+
+    setUserInput((prevstate) => {
+      return { ...prevstate, amount: event.target.value };
     });
   };
 
   const onChangeDateHandler = (event) => {
     // setDate(event.target.value);
-    setUserInput({
-      ...userInput,
-      date: event.target.value,
+    // setUserInput({
+    //   ...userInput,
+    //   date: event.target.value,
+    // });
+
+    setUserInput((prevstate) => {
+      return { ...prevstate, date: event.target.value };
     });
   };
   return (
