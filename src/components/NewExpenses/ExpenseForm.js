@@ -2,58 +2,40 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-  //   const [title, setTitle] = useState("");
-  //   const [amount, setAmount] = useState("");
-  //   const [date, setDate] = useState("");
-
-  const [userInput, setUserInput] = useState({
-    title: "",
-    amount: "",
-    date: "",
-  });
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
+  const [date, setDate] = useState("");
 
   const onChangeTitleHandler = (event) => {
-    // setTitle(event.target.value);
-    // setUserInput({
-    //   ...userInput,
-    //   title: event.target.value,
-    // });
-
-    //always use anonymous function when we are dealing with prev states or our new value are depending on the perv states
-    setUserInput((prevstate) => {
-      return { ...prevstate, title: event.target.value };
-    });
+    setTitle(event.target.value);
   };
 
   const onChangeAmountHandler = (event) => {
-    // setAmount(event.target.value);
-    // setUserInput({
-    //   ...userInput,
-    //   amount: event.target.value,
-    // });
-
-    setUserInput((prevstate) => {
-      return { ...prevstate, amount: event.target.value };
-    });
+    setAmount(event.target.value);
   };
 
   const onChangeDateHandler = (event) => {
-    // setDate(event.target.value);
-    // setUserInput({
-    //   ...userInput,
-    //   date: event.target.value,
-    // });
+    setDate(event.target.value);
+  };
+  const onFormSUbmitButton = (event) => {
+    event.preventDefault();
 
-    setUserInput((prevstate) => {
-      return { ...prevstate, date: event.target.value };
-    });
+    const ExpenseData = {
+      title: title,
+      amount: amount,
+      date: new Date(date),
+    };
+    setTitle("");
+    setAmount("");
+    setDate("");
+    console.log(ExpenseData);
   };
   return (
-    <form>
+    <form onSubmit={onFormSUbmitButton}>
       <div className="new-expense__controls">
         <div className=".new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={onChangeTitleHandler} />
+          <input type="text" onChange={onChangeTitleHandler} value={title} />
         </div>
 
         <div className=".new-expense__control">
@@ -62,6 +44,7 @@ const ExpenseForm = () => {
             type="text"
             min="0.01"
             step="0.01"
+            value={amount}
             onChange={onChangeAmountHandler}
           />
         </div>
@@ -72,12 +55,13 @@ const ExpenseForm = () => {
             type="date"
             min="2019-01-01"
             max="2024-12-31"
+            value={date}
             onChange={onChangeDateHandler}
           />
         </div>
       </div>
       <div className="new-expense__actions">
-        <button>Add</button>
+        <button type="submit">Add</button>
       </div>
     </form>
   );
