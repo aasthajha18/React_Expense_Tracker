@@ -25,6 +25,8 @@ const ExpenseForm = () => {
       amount: amount,
       date: new Date(date),
     };
+
+    //Two way binding : setting blank value after the form gets submitted.
     setTitle("");
     setAmount("");
     setDate("");
