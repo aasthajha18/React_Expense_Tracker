@@ -24,10 +24,13 @@ const App = () => {
       date: new Date(2021, 5, 12),
     },
   ];
-
+  //CHILD TO PARENT PROPS
+  const onReceivingExpenseDataHandler = (expectsExpenseDataFromNewExpense) => {
+    console.log(expectsExpenseDataFromNewExpense);
+  };
   return (
     <div>
-      <NewExpense />
+      <NewExpense onReceivingExpenseData={onReceivingExpenseDataHandler} />
       <NewExpenseItem expenses={expenses} />
     </div>
   );
