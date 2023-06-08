@@ -25,14 +25,18 @@ const NewExpenseItem = (props) => {
           onTwoWayBinding={year}
           onFilterChange={onFilterChangeHandler}
         />
-        {filteredYear.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            amount={expense.amount}
-            title={expense.title}
-            date={expense.date}
-          />
-        ))}
+        {filteredYear.length === 0 ? (
+          <p style={{ color: "white" }}>Add the first Item for the Year</p>
+        ) : (
+          filteredYear.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              amount={expense.amount}
+              title={expense.title}
+              date={expense.date}
+            />
+          ))
+        )}
       </Card>
     </div>
   );
