@@ -17,7 +17,7 @@ const ExpenseForm = (props) => {
   const onChangeDateHandler = (event) => {
     setDate(event.target.value);
   };
-  const onFormSUbmitButton = (event) => {
+  const onFormSubmitButton = (event) => {
     event.preventDefault();
 
     const ExpenseData = {
@@ -25,15 +25,16 @@ const ExpenseForm = (props) => {
       amount: amount,
       date: new Date(date),
     };
-
+    console.log("aastha1" + ExpenseData);
     props.onSaveExpenseData(ExpenseData);
+    console.log("aastha1=2" + ExpenseData);
     //Two way binding : setting blank value after the form gets submitted.
     setTitle("");
     setAmount("");
     setDate("");
   };
   return (
-    <form onSubmit={onFormSUbmitButton}>
+    <form onSubmit={onFormSubmitButton}>
       <div className="new-expense__controls">
         <div className=".new-expense__control">
           <label>Title</label>
